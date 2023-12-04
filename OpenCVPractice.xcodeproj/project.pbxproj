@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5FB347B42B1D759000D72303 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FB347B32B1D759000D72303 /* main.cpp */; };
+		5FB347F02B1D974B00D72303 /* Chapter1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FB347EE2B1D974B00D72303 /* Chapter1.cpp */; };
+		5FB347F42B1DA87900D72303 /* BasicDataStruct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FB347F22B1DA87900D72303 /* BasicDataStruct.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +28,10 @@
 		5FB347B02B1D759000D72303 /* OpenCVPractice */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenCVPractice; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB347B32B1D759000D72303 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5FB347EA2B1D871000D72303 /* OpenCVPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenCVPractice.entitlements; sourceTree = "<group>"; };
+		5FB347EE2B1D974B00D72303 /* Chapter1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Chapter1.cpp; sourceTree = "<group>"; };
+		5FB347EF2B1D974B00D72303 /* Chapter1.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Chapter1.hpp; sourceTree = "<group>"; };
+		5FB347F22B1DA87900D72303 /* BasicDataStruct.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BasicDataStruct.cpp; sourceTree = "<group>"; };
+		5FB347F32B1DA87900D72303 /* BasicDataStruct.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BasicDataStruct.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +64,22 @@
 		5FB347B22B1D759000D72303 /* OpenCVPractice */ = {
 			isa = PBXGroup;
 			children = (
+				5FB347F12B1D9E7A00D72303 /* Chapters */,
 				5FB347EA2B1D871000D72303 /* OpenCVPractice.entitlements */,
 				5FB347B32B1D759000D72303 /* main.cpp */,
 			);
 			path = OpenCVPractice;
+			sourceTree = "<group>";
+		};
+		5FB347F12B1D9E7A00D72303 /* Chapters */ = {
+			isa = PBXGroup;
+			children = (
+				5FB347EE2B1D974B00D72303 /* Chapter1.cpp */,
+				5FB347EF2B1D974B00D72303 /* Chapter1.hpp */,
+				5FB347F22B1DA87900D72303 /* BasicDataStruct.cpp */,
+				5FB347F32B1DA87900D72303 /* BasicDataStruct.hpp */,
+			);
+			path = Chapters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +113,7 @@
 				TargetAttributes = {
 					5FB347AF2B1D759000D72303 = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -122,6 +141,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FB347B42B1D759000D72303 /* main.cpp in Sources */,
+				5FB347F42B1DA87900D72303 /* BasicDataStruct.cpp in Sources */,
+				5FB347F02B1D974B00D72303 /* Chapter1.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +261,7 @@
 		5FB347B82B1D759000D72303 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OpenCVPractice/OpenCVPractice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9QJLU3JB2;
@@ -306,12 +328,16 @@
 					"-lopencv_core",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenCVPractice/OpenCVPractice-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		5FB347B92B1D759000D72303 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = OpenCVPractice/OpenCVPractice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9QJLU3JB2;
@@ -378,6 +404,8 @@
 					"-lopencv_core",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenCVPractice/OpenCVPractice-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

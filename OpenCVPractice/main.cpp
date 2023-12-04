@@ -6,28 +6,54 @@
 //
 
 #include <iostream>
-#include <opencv2/opencv.hpp>
+#include "Chapters/Chapter1.hpp"
+#define Chapter_1
 
-#define Chapter_1222
+#ifdef BasicDataStruct
+#include "Chapters/BasicDataStruct.hpp"
+#endif
+
+#ifdef Chapter_1
+#include "Chapters/Chapter1.hpp"
+#endif
+
 
 using namespace std;
 using namespace cv;
 
-std::string imagePath = "/Users/segassdc/Downloads/a.png";
+//공통으로 쓰일 전역변수
+extern string title;
+extern string barName;
+extern Mat image;
+
+//Main에서 경로 혹은 하드코딩으로 넘겨줄값.
+string imagePath = "/Users/segassdc/Downloads/a.png";
+int TrackBarPosvalue = 127;
 
 int main(int argc, const char * argv[]) {
+    title = "Practice";
+    barName = "brightness";
     
 #ifdef CV_SETTING
-    Mat image = cv::imread(imagePath);
-
+    image = cv::imread(imagePath);
     if (!image.empty()) {
         imshow("이미지 갱신", image);
         waitKey(0);
     } else {
         cout << "이미지 갱신 실패" << endl;
     }
+    
+#elifdef BasicDataStruct
+    studyMatStruct();
 #elifdef Chapter_1
-    cout<<"Chapter1"<<endl;
+
+    //image = Mat(300,500,CV_8UC1, Scalar(127));
+    image = getConvertImage(imagePath);
+    namedWindow(title,WINDOW_AUTOSIZE);
+    createTrackbar(barName,title,&TrackBarPosvalue, 255, onChange);
+    setMouseCallback(title, onMouse,0);
+    imshow(title,image);
+    
 #elifdef Chapter_2
     cout<<"Chapter2"<<endl;
 #elifdef Chapter_3
