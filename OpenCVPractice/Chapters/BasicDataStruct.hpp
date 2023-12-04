@@ -10,4 +10,8 @@
 using namespace std;
 using namespace cv;
 
-void studyMatStruct();
+void study2D();
+void study3D();
+void studyVector();
+void studyRotateRect();
+void studyMat();

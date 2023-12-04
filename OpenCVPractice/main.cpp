@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "Chapters/Chapter1.hpp"
-#define Chapter_1
+#define BasicDataStruct
 
 #ifdef BasicDataStruct
 #include "Chapters/BasicDataStruct.hpp"
@@ -38,22 +38,23 @@ int main(int argc, const char * argv[]) {
     image = cv::imread(imagePath);
     if (!image.empty()) {
         imshow("이미지 갱신", image);
-        waitKey(0);
     } else {
         cout << "이미지 갱신 실패" << endl;
     }
     
 #elifdef BasicDataStruct
-    studyMatStruct();
+    study2D();
+    study3D();
+    studyVector();
+    studyRotateRect();
+    studyMat();
 #elifdef Chapter_1
-
-    //image = Mat(300,500,CV_8UC1, Scalar(127));
+    //image = Mat(300,500,CV_16UC1, Scalar(25555));
     image = getConvertImage(imagePath);
     namedWindow(title,WINDOW_AUTOSIZE);
     createTrackbar(barName,title,&TrackBarPosvalue, 255, onChange);
     setMouseCallback(title, onMouse,0);
     imshow(title,image);
-    
 #elifdef Chapter_2
     cout<<"Chapter2"<<endl;
 #elifdef Chapter_3
