@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "Chapters/Chapter1.hpp"
-#define BasicDataStruct
+#define Chapter_2
 
 #ifdef BasicDataStruct
 #include "Chapters/BasicDataStruct.hpp"
@@ -27,19 +27,21 @@ extern string barName;
 extern Mat image;
 
 //Main에서 경로 혹은 하드코딩으로 넘겨줄값.
-string imagePath = "/Users/segassdc/Downloads/a.png";
+string imagePath = "/Users/segassdc/Downloads/person.png";
 int TrackBarPosvalue = 127;
 
 int main(int argc, const char * argv[]) {
     title = "Practice";
     barName = "brightness";
-    
+    //image = Mat(300,500,CV_16UC1, Scalar(25555));
+    image = getConvertImage(imagePath);
 #ifdef CV_SETTING
     image = cv::imread(imagePath);
     if (!image.empty()) {
         imshow("이미지 갱신", image);
     } else {
         cout << "이미지 갱신 실패" << endl;
+        return;
     }
     
 #elifdef BasicDataStruct
@@ -49,12 +51,11 @@ int main(int argc, const char * argv[]) {
     studyRotateRect();
     studyMat();
 #elifdef Chapter_1
-    //image = Mat(300,500,CV_16UC1, Scalar(25555));
-    image = getConvertImage(imagePath);
-    namedWindow(title,WINDOW_AUTOSIZE);
-    createTrackbar(barName,title,&TrackBarPosvalue, 255, onChange);
-    setMouseCallback(title, onMouse,0);
-    imshow(title,image);
+    studyMatMeanBrightness();
+    studyBrightnessScroll();
+    studyBandingEffect();
+    studyMatFncs();
+    estimateLoopResult();
 #elifdef Chapter_2
     cout<<"Chapter2"<<endl;
 #elifdef Chapter_3
@@ -79,7 +80,6 @@ int main(int argc, const char * argv[]) {
     cout<<"Macro is in the wrong format or not set"<<endl;
 #endif
 
-    waitKey(0);
-
+    waitKey();
     return 0;
 }
