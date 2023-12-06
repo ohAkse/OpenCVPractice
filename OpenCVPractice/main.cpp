@@ -5,9 +5,7 @@
 //  Created by 박유경 on 2023/12/04.
 //
 
-#include <iostream>
-#include "Chapters/Chapter1.hpp"
-#define Chapter_2
+#define Chapter_3
 
 #ifdef BasicDataStruct
 #include "Chapters/BasicDataStruct.hpp"
@@ -16,6 +14,14 @@
 #ifdef Chapter_1
 #include "Chapters/Chapter1.hpp"
 #endif
+
+#ifdef Chapter_2
+#include "Chapters/Chapter2.hpp"
+#endif
+
+#include <iostream>
+#include <opencv2/opencv.hpp>
+
 
 
 using namespace std;
@@ -27,14 +33,15 @@ extern string barName;
 extern Mat image;
 
 //Main에서 경로 혹은 하드코딩으로 넘겨줄값.
-string imagePath = "/Users/segassdc/Downloads/person.png";
+string imagePath = "/Users/segassdc/Downloads/background.png";
 int TrackBarPosvalue = 127;
 
 int main(int argc, const char * argv[]) {
     title = "Practice";
     barName = "brightness";
     //image = Mat(300,500,CV_16UC1, Scalar(25555));
-    image = getConvertImage(imagePath);
+    image = imread(imagePath);
+    
 #ifdef CV_SETTING
     image = cv::imread(imagePath);
     if (!image.empty()) {
@@ -51,13 +58,19 @@ int main(int argc, const char * argv[]) {
     studyRotateRect();
     studyMat();
 #elifdef Chapter_1
+    image = getConvertImage(imagePath);
     studyMatMeanBrightness();
     studyBrightnessScroll();
     studyBandingEffect();
     studyMatFncs();
     estimateLoopResult();
 #elifdef Chapter_2
-    cout<<"Chapter2"<<endl;
+    //studyBlur();
+    //studyShapening();
+    resize(image, image, Size(500,500));
+    imshow(title, image);
+    setMouseCallback(title, onMouseMove,0);
+    
 #elifdef Chapter_3
     cout<<"Chapter3"<<endl;
 #elifdef Chapter_4
@@ -80,6 +93,6 @@ int main(int argc, const char * argv[]) {
     cout<<"Macro is in the wrong format or not set"<<endl;
 #endif
 
-    waitKey();
+    waitKey(0);
     return 0;
 }

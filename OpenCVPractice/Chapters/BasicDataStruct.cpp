@@ -60,7 +60,6 @@ void studyRotateRect() {
     rotatedRect.points(pts); //곡지점 좌표 번환
     
     for( int i=0; i<sizeof(pts)/sizeof(pts[0]); i++) {
-        cout<<"ZZ"<<endl;
         line(image, pts[i], pts[ (i+ 1) % 4 ], Scalar(0), 3);
         circle(image, pts[i], 10, Scalar(0,0,255));
     }

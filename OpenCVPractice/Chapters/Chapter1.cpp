@@ -6,10 +6,9 @@
 //
 
 #include "Chapter1.hpp"
-
-Mat image;
-string title;
-string barName;
+extern Mat image;
+extern string title;
+extern string barName;
 
 
 void onMouse(int event, int x,  int y, int flags, void * param) {

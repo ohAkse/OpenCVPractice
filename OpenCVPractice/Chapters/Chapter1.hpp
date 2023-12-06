@@ -11,7 +11,6 @@
 using namespace std;
 using namespace cv;
 
-
 void onMouse(int event, int x,  int y, int flaogs, void * param);
 void onChange(int x, void *);
 Mat getConvertImage(string imagePath);
